@@ -46,7 +46,7 @@ class Product:
         return f"{self.name}, Price: {self.price}, Quantity: {self.get_quantity()}"
 
 
-if __name__ == "__main__":
+def main():
     bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
     mac = Product("MacBook Air M2", price=1450, quantity=100)
 
@@ -59,3 +59,7 @@ if __name__ == "__main__":
 
     bose.set_quantity(1000)
     print(bose.show())
+
+
+if __name__ == "__main__":
+    main()

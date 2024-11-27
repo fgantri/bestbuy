@@ -27,6 +27,8 @@ class Store:
         for product, quantity in shopping_list:
             for i_product in self.get_all_products():
                 if i_product.name == product.name:
+                    if quantity > i_product.get_quantity():
+                        raise ValueError("Error while making order! Quantity larger than what exists")
                     i_product.set_quantity(product.get_quantity() - quantity)
             total += product.price * quantity
         return total

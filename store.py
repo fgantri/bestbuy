@@ -3,6 +3,7 @@ from products import Product
 class Store:
 
     def __init__(self, products):
+        """store constructor"""
         self._products: [Product] = [] if products is None else products
 
     def add_product(self, product):
@@ -35,6 +36,7 @@ class Store:
 
 
 def main():
+    """main test function for store class"""
     product_list = [Product("MacBook Air M2", price=1450, quantity=100),
                     Product("Bose QuietComfort Earbuds", price=250, quantity=500),
                     Product("Google Pixel 7", price=500, quantity=250),
@@ -44,8 +46,8 @@ def main():
     products = store.get_all_products()
     print(store.get_total_quantity())
     print(store.order([(products[0], 1), (products[1], 2)]))
-    for p in products:
-        print(p.get_quantity())
+    for product in products:
+        print(product.get_quantity())
 
 
 if __name__ == "__main__":

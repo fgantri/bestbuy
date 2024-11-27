@@ -1,6 +1,7 @@
 class Product:
 
     def __init__(self, name, price, quantity):
+        """product constructor"""
         if name == "":
             raise Exception("product name cannot be empty!")
         self.name = name
@@ -47,6 +48,7 @@ class Product:
 
 
 def main():
+    """main test function for products class"""
     bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
     mac = Product("MacBook Air M2", price=1450, quantity=100)
 

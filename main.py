@@ -1,7 +1,9 @@
 from products import Product
 from store import Store
+import sys
 
 def main():
+    """bestbuy store app main logic"""
     # setup initial stock of inventory
     product_list = [Product("MacBook Air M2", price=1450, quantity=100),
                     Product("Bose QuietComfort Earbuds", price=250, quantity=500),
@@ -13,6 +15,7 @@ def main():
 
 
 def start(store):
+    """store user interface asks user for interaction until quit"""
     menu = {
         1: (lambda: list_products(store), "List all products in store"),
         2: (lambda: print_store_amount(store), "Show total amount in store"),
@@ -34,6 +37,7 @@ def start(store):
 
 
 def print_menu(menu):
+    """prints menu with available tasks to select"""
     print("Store Menu")
     print("----------")
     for key, option in menu.items():
@@ -42,6 +46,7 @@ def print_menu(menu):
 
 
 def list_products(store):
+    """lists all available products in given store"""
     print("------")
     for i, product in enumerate(store.get_all_products(), start=1):
         print(f"{i}. {product.name}, Price: ${product.price}, Quantity: {product.get_quantity()}")
@@ -49,10 +54,12 @@ def list_products(store):
 
 
 def print_store_amount(store):
+    """prints the total amount of products available in given store"""
     print(f"Total of {store.get_total_quantity()} items in store")
 
 
 def make_order(store):
+    """runs an order process from store until user confirms with empty input"""
     shopping_list = []
     list_products(store)
     print("When you want to finish order, enter empty text.")
@@ -68,8 +75,8 @@ def make_order(store):
                 if len(shopping_list) > 0:
                     try:
                         total_payment = store.order(shopping_list)
-                    except ValueError as e:
-                        print(e)
+                    except ValueError as error_msg:
+                        print(error_msg)
                         return
                     print(f"Order made! Total payment: {total_payment}")
                 return
@@ -82,4 +89,4 @@ def make_order(store):
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())
